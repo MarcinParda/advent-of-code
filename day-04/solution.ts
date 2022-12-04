@@ -7,40 +7,14 @@ const input = readFileSync(join(__dirname, 'data.txt')).toString();
 let result1 = 0;
 input.split('\n').forEach((line) => {
   const [elf1, elf2] = line.split(',');
-  const [areaStart, areaEnd] = elf1.split('-');
-  const [elf2AreaStart, elf2AreaEnd] = elf2.split('-');
-  let area1ContainsElf2Start = false;
-  let area2ContainsElf2End = false;
-  for (let i = parseInt(areaStart); i <= parseInt(areaEnd); i++) {
-    if (i.toString() === elf2AreaStart) {
-      area1ContainsElf2Start = true;
-    }
-    if (i.toString() === elf2AreaEnd) {
-      area2ContainsElf2End = true;
-    }
-  }
-  let dontRunSecondLoop = false;
+  const [elf1AreaStart, elf1AreaEnd] = elf1.split('-').map(Number);
+  const [elf2AreaStart, elf2AreaEnd] = elf2.split('-').map(Number);
 
-  if (area1ContainsElf2Start && area2ContainsElf2End) {
+  if (
+    (elf1AreaStart <= elf2AreaStart && elf1AreaEnd >= elf2AreaEnd) ||
+    (elf2AreaStart <= elf1AreaStart && elf2AreaEnd >= elf1AreaEnd)
+  ) {
     result1++;
-    dontRunSecondLoop = true;
-  }
-
-  if (!dontRunSecondLoop) {
-    area1ContainsElf2Start = false;
-    area2ContainsElf2End = false;
-    for (let i = parseInt(elf2AreaStart); i <= parseInt(elf2AreaEnd); i++) {
-      if (i.toString() === areaStart) {
-        area1ContainsElf2Start = true;
-      }
-      if (i.toString() === areaEnd) {
-        area2ContainsElf2End = true;
-      }
-    }
-
-    if (area1ContainsElf2Start && area2ContainsElf2End) {
-      result1++;
-    }
   }
 });
 
@@ -50,40 +24,14 @@ console.log('result1:', result1);
 let result2 = 0;
 input.split('\n').forEach((line) => {
   const [elf1, elf2] = line.split(',');
-  const [areaStart, areaEnd] = elf1.split('-');
-  const [elf2AreaStart, elf2AreaEnd] = elf2.split('-');
-  let area1ContainsElf2Start = false;
-  let area2ContainsElf2End = false;
-  for (let i = parseInt(areaStart); i <= parseInt(areaEnd); i++) {
-    if (i.toString() === elf2AreaStart) {
-      area1ContainsElf2Start = true;
-    }
-    if (i.toString() === elf2AreaEnd) {
-      area2ContainsElf2End = true;
-    }
-  }
-  let dontRunSecondLoop = false;
+  const [elf1AreaStart, elf1AreaEnd] = elf1.split('-').map(Number);
+  const [elf2AreaStart, elf2AreaEnd] = elf2.split('-').map(Number);
 
-  if (area1ContainsElf2Start || area2ContainsElf2End) {
+  if (
+    (elf1AreaStart <= elf2AreaEnd && elf1AreaEnd >= elf2AreaStart) ||
+    (elf2AreaStart <= elf1AreaEnd && elf2AreaEnd >= elf1AreaStart)
+  ) {
     result2++;
-    dontRunSecondLoop = true;
-  }
-
-  if (!dontRunSecondLoop) {
-    area1ContainsElf2Start = false;
-    area2ContainsElf2End = false;
-    for (let i = parseInt(elf2AreaStart); i <= parseInt(elf2AreaEnd); i++) {
-      if (i.toString() === areaStart) {
-        area1ContainsElf2Start = true;
-      }
-      if (i.toString() === areaEnd) {
-        area2ContainsElf2End = true;
-      }
-    }
-
-    if (area1ContainsElf2Start || area2ContainsElf2End) {
-      result2++;
-    }
   }
 });
 console.log('result2:', result2);
