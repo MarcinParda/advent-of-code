@@ -32,8 +32,6 @@ stacksLines.forEach((array) => {
 
 stacks = stacks.map((stack) => stack.reverse());
 
-console.log(stacks);
-
 const proceduresLines = proceduresInput
   .split('\n')
   .map((line) => line.split('move ').splice(1)[0].split(' from '))
@@ -44,9 +42,14 @@ proceduresLines.forEach((line) => {
   let [amount, from, to] = line;
   let fromStack = stacks[from - 1];
   let toStack = stacks[to - 1];
+  const stack: string[] = [];
   for (let i = 0; i < amount; i++) {
-    toStack.push(fromStack.pop() as string);
+    stack.push(fromStack.pop() as string);
   }
+  console.log(stack);
+
+  stack.reverse();
+  toStack.push(...stack);
 });
 
 console.log(
