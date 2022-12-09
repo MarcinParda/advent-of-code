@@ -4,53 +4,14 @@ import { join } from 'node:path';
 const input = readFileSync(join(__dirname, 'data.txt')).toString();
 const lines = input.split('\n');
 
-function moveTail(
-  head: [number, number],
-  tail: [number, number]
-): [number, number] {
-  const horizontlGap = head[0] - tail[0];
+function moveTail(head: [number, number], tail: [number, number]) {
+  const horizontalGap = head[0] - tail[0];
   const verticalGap = head[1] - tail[1];
 
-  // to close, dont move
-  if (Math.abs(horizontlGap) <= 1 && Math.abs(verticalGap) <= 1) {
-    return tail;
-  }
-
-  // to far, move diagonal
-  if (Math.abs(horizontlGap) >= 2 && Math.abs(verticalGap) >= 2) {
-    if (tail[0] < head[0]) {
-      tail[0] = head[0] - 1;
-    } else {
-      tail[0] = head[0] + 1;
-    }
-    if (tail[1] < head[1]) {
-      tail[1] = head[1] - 1;
-    } else {
-      tail[1] = head[1] + 1;
-    }
-    return tail;
-  }
-
-  // to far, move horizontal
-  if (Math.abs(horizontlGap) >= 2) {
-    if (tail[0] < head[0]) {
-      tail[0] = head[0] - 1;
-    } else {
-      tail[0] = head[0] + 1;
-    }
-    tail[1] = head[1];
-    return tail;
-  }
-
-  // to far, move vertical
-  if (Math.abs(verticalGap) >= 2) {
-    tail[0] = head[0];
-    if (tail[1] < head[1]) {
-      tail[1] = head[1] - 1;
-    } else {
-      tail[1] = head[1] + 1;
-    }
-    return tail;
+  if (Math.abs(horizontalGap) >= 2 || Math.abs(verticalGap) >= 2) {
+    // Move the tail in a diagonal direction towards the head
+    tail[0] = tail[0] + Math.sign(horizontalGap);
+    tail[1] = tail[1] + Math.sign(verticalGap);
   }
 
   return tail;
