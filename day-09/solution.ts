@@ -91,11 +91,16 @@ for (const line of lines) {
       tailsPositions[i] = moveTail(tailsPositions[i - 1], tailsPositions[i]);
     }
 
-    const tailTrack = `${tailsPositions[0][0]},${tailsPositions[0][1]}`;
-    const neckTrack = `${tailsPositions[8][0]},${tailsPositions[8][1]}`;
+    const tailTrackPositions = tailsPositions.at(-1);
+    const neckTrackPositions = tailsPositions.at(0);
 
-    result1.add(tailTrack);
-    result2.add(neckTrack);
+    if (tailTrackPositions && neckTrackPositions) {
+      const tailTrack = tailTrackPositions.join(',');
+      const neckTrack = neckTrackPositions.join(',');
+
+      result1.add(tailTrack);
+      result2.add(neckTrack);
+    }
   }
 }
 
