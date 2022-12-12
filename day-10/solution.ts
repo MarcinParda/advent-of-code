@@ -1,7 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-// I changed my input so every "addx " is changed to "noop\nnoop\n"
 const input = readFileSync(join(__dirname, 'data.txt')).toString();
 const lines = input.split('\n');
 
