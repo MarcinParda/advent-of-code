@@ -17,3 +17,5 @@
 | 13  | [Link](day-13) | [Link](http://adventofcode.com/2022/day/13) |
 | 14  | [Link](day-14) | [Link](http://adventofcode.com/2022/day/14) |
 | 15  | [Link](day-15) | [Link](http://adventofcode.com/2022/day/15) |
+| 16  | [Link](day-16) | [Link](http://adventofcode.com/2022/day/16) |
+| 17  | [Link](day-17) | [Link](http://adventofcode.com/2022/day/17) |

@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --respawn"
+    "dev": "ts-node-dev --respawn",
+    "1-2023": "ts-node-dev --respawn ./2023/day-01/solution.ts"
   },
   "dependencies": {
     "prettier": "^2.8.0",
