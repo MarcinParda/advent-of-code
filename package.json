@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --respawn",
-    "1-2023": "ts-node-dev --respawn ./2023/day-01/solution.ts"
+    "1-2023": "ts-node-dev --respawn ./2023/day-01/solution.ts",
+    "2-2023": "ts-node-dev --respawn ./2023/day-02/solution.ts"
   },
   "dependencies": {
     "prettier": "^2.8.0",
